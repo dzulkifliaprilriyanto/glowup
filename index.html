@@ -259,21 +259,28 @@
                             <!-- Video Frame -->
                             <div class="relative w-full aspect-[9/16] bg-jetBlack overflow-hidden">
                                 <iframe 
-                                    class="w-full h-full object-cover pointer-events-none scale-[1.02]" 
-                                    src="https://www.youtube.com/embed/YN_-mjS3Aqk?autoplay=1&mute=1&loop=1&playlist=YN_-mjS3Aqk&controls=0&modestbranding=1&rel=0&playsinline=1" 
+                                    id="hero-short-iframe"
+                                    class="w-full h-full object-cover scale-[1.02]" 
+                                    src="https://www.youtube.com/embed/YN_-mjS3Aqk?autoplay=1&mute=0&loop=1&playlist=YN_-mjS3Aqk&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1" 
                                     title="Glow Up Moto Wash & Detailing Showcase" 
                                     frameborder="0" 
-                                    allow="autoplay; encrypted-media" 
+                                    allow="autoplay; encrypted-media; fullscreen" 
                                     allowfullscreen>
                                 </iframe>
                                 <!-- Subtle top & bottom vignette so video edges blend cleanly -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-deepBlack via-transparent to-deepBlack/30 pointer-events-none"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-deepBlack/80 via-transparent to-deepBlack/30 pointer-events-none"></div>
                                 
                                 <!-- Live Badge Top Left -->
-                                <div class="absolute top-3.5 left-3.5 inline-flex items-center space-x-2 bg-jetBlack/80 backdrop-blur-md px-3 py-1 rounded-full border border-neonLime/30">
+                                <div class="absolute top-3.5 left-3.5 inline-flex items-center space-x-2 bg-jetBlack/80 backdrop-blur-md px-3 py-1 rounded-full border border-neonLime/30 pointer-events-none">
                                     <span class="w-2 h-2 rounded-full bg-electricGreen animate-pulse"></span>
                                     <span class="text-[10px] font-racing font-bold text-white tracking-wider uppercase">DETAILING SHOWCASE</span>
                                 </div>
+
+                                <!-- Audio Toggle Button Top Right (Fallback jika browser memblokir autoplay bersuara) -->
+                                <button type="button" onclick="toggleHeroAudio()" id="hero-audio-btn" class="absolute top-3.5 right-3.5 bg-jetBlack/85 hover:bg-neonLime text-neonLime hover:text-jetBlack backdrop-blur-md px-2.5 py-1 rounded-full border border-neonLime/40 text-[10px] font-racing font-bold flex items-center space-x-1.5 transition-all shadow-lg z-10" title="Kontrol Suara Video">
+                                    <i id="hero-audio-icon" class="fa-solid fa-volume-high"></i>
+                                    <span id="hero-audio-text">AUDIO ON</span>
+                                </button>
                             </div>
 
                             <!-- Dedicated Bottom Caption Bar (No Overlap with Video Content) -->
@@ -282,9 +289,9 @@
                                     <p class="text-[11px] text-neonLime font-semibold uppercase tracking-wider">Cabang Pasuruan</p>
                                     <p class="font-racing font-bold text-sm text-white">Glow Up Moto Wash & Detailing</p>
                                 </div>
-                                <div class="w-9 h-9 rounded-lg bg-neonLime/10 border border-neonLime/30 flex items-center justify-center text-neonLime shrink-0">
-                                    <i class="fa-solid fa-play text-xs"></i>
-                                </div>
+                                <button type="button" onclick="openFullscreenShort('YN_-mjS3Aqk', 'GLOW UP DETAILING SHOWCASE')" class="w-9 h-9 rounded-lg bg-neonLime/10 hover:bg-neonLime border border-neonLime/30 flex items-center justify-center text-neonLime hover:text-jetBlack shrink-0 transition-all" title="Tonton Fullscreen">
+                                    <i class="fa-solid fa-expand text-xs"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -815,8 +822,11 @@
                 <!-- Track Set 1 -->
                 <div class="flex space-x-6 shrink-0">
                     <!-- Short 1 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('YN_-mjS3Aqk', 'FOAM & WASH - Cuci Bersih Menyeluruh')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/YN_-mjS3Aqk?autoplay=1&mute=1&loop=1&playlist=YN_-mjS3Aqk&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">FOAM & WASH</span>
                             <p class="text-xs font-semibold text-white truncate">Cuci Bersih Menyeluruh</p>
@@ -824,8 +834,11 @@
                     </div>
 
                     <!-- Short 2 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('CFbABH_H3EA', 'ENGINE DETAILING - Sela Mesin Kembali Kinclong')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/CFbABH_H3EA?autoplay=1&mute=1&loop=1&playlist=CFbABH_H3EA&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">ENGINE DETAILING</span>
                             <p class="text-xs font-semibold text-white truncate">Sela Mesin Kembali Kinclong</p>
@@ -833,8 +846,11 @@
                     </div>
 
                     <!-- Short 3 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('777crr2XQVA', 'POLISHING - Kilau Bodi Tajam Maksimal')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/777crr2XQVA?autoplay=1&mute=1&loop=1&playlist=777crr2XQVA&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">POLISHING</span>
                             <p class="text-xs font-semibold text-white truncate">Kilau Bodi Tajam Maksimal</p>
@@ -842,8 +858,11 @@
                     </div>
 
                     <!-- Short 4 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('f4TKLk5DIbA', 'CERAMIC COATING - Proteksi Efek Daun Talas')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/f4TKLk5DIbA?autoplay=1&mute=1&loop=1&playlist=f4TKLk5DIbA&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">CERAMIC COATING</span>
                             <p class="text-xs font-semibold text-white truncate">Proteksi Efek Daun Talas</p>
@@ -851,8 +870,11 @@
                     </div>
 
                     <!-- Short 5 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('CFbABH_H3EA', 'PREMIUM WASH - Masuk Dekil, Keluar Gokil!')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/CFbABH_H3EA?autoplay=1&mute=1&loop=1&playlist=CFbABH_H3EA&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 5" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">PREMIUM WASH</span>
                             <p class="text-xs font-semibold text-white truncate">Masuk Dekil, Keluar Gokil!</p>
@@ -863,8 +885,11 @@
                 <!-- Track Set 2 (Duplicate for seamless infinite loop) -->
                 <div class="flex space-x-6 shrink-0">
                     <!-- Short 1 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('YN_-mjS3Aqk', 'FOAM & WASH - Cuci Bersih Menyeluruh')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/YN_-mjS3Aqk?autoplay=1&mute=1&loop=1&playlist=YN_-mjS3Aqk&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">FOAM & WASH</span>
                             <p class="text-xs font-semibold text-white truncate">Cuci Bersih Menyeluruh</p>
@@ -872,8 +897,11 @@
                     </div>
 
                     <!-- Short 2 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('CFbABH_H3EA', 'ENGINE DETAILING - Sela Mesin Kembali Kinclong')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/CFbABH_H3EA?autoplay=1&mute=1&loop=1&playlist=CFbABH_H3EA&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">ENGINE DETAILING</span>
                             <p class="text-xs font-semibold text-white truncate">Sela Mesin Kembali Kinclong</p>
@@ -881,8 +909,11 @@
                     </div>
 
                     <!-- Short 3 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('777crr2XQVA', 'POLISHING - Kilau Bodi Tajam Maksimal')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/777crr2XQVA?autoplay=1&mute=1&loop=1&playlist=777crr2XQVA&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">POLISHING</span>
                             <p class="text-xs font-semibold text-white truncate">Kilau Bodi Tajam Maksimal</p>
@@ -890,8 +921,11 @@
                     </div>
 
                     <!-- Short 4 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('f4TKLk5DIbA', 'CERAMIC COATING - Proteksi Efek Daun Talas')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/f4TKLk5DIbA?autoplay=1&mute=1&loop=1&playlist=f4TKLk5DIbA&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">CERAMIC COATING</span>
                             <p class="text-xs font-semibold text-white truncate">Proteksi Efek Daun Talas</p>
@@ -899,8 +933,11 @@
                     </div>
 
                     <!-- Short 5 -->
-                    <div class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl">
+                    <div onclick="openFullscreenShort('CFbABH_H3EA', 'PREMIUM WASH - Masuk Dekil, Keluar Gokil!')" class="w-60 sm:w-64 h-[420px] rounded-2xl overflow-hidden neon-border bg-deepBlack relative shadow-xl cursor-pointer group">
                         <iframe class="w-full h-full object-cover pointer-events-none" src="https://www.youtube.com/embed/CFbABH_H3EA?autoplay=1&mute=1&loop=1&playlist=CFbABH_H3EA&controls=0&modestbranding=1&rel=0&playsinline=1" title="Glow Up Moto Wash Short 5" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-jetBlack/80 border border-neonLime/40 flex items-center justify-center text-neonLime opacity-85 group-hover:opacity-100 group-hover:bg-neonLime group-hover:text-jetBlack transition-all">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </div>
                         <div class="absolute bottom-3 left-3 right-3 bg-deepBlack/85 backdrop-blur-sm px-3 py-2 rounded-xl border border-neonLime/30">
                             <span class="text-[10px] text-neonLime font-racing font-bold block">PREMIUM WASH</span>
                             <p class="text-xs font-semibold text-white truncate">Masuk Dekil, Keluar Gokil!</p>
@@ -1131,8 +1168,108 @@
         </div>
     </footer>
 
+    <!-- FULLSCREEN SHORT MODAL -->
+    <div id="short-fullscreen-modal" class="fixed inset-0 z-[100] hidden bg-jetBlack/95 backdrop-blur-xl flex flex-col items-center justify-center p-4">
+        <!-- Top Bar -->
+        <div class="w-full max-w-md flex items-center justify-between mb-3 px-1">
+            <div class="flex items-center space-x-2 overflow-hidden">
+                <span class="w-2.5 h-2.5 rounded-full bg-neonLime shrink-0"></span>
+                <p id="fullscreen-short-title" class="font-racing font-bold text-xs sm:text-sm text-white truncate">GLOW UP SHORTS</p>
+            </div>
+            <button type="button" onclick="closeFullscreenShort()" class="bg-darkGray hover:bg-neonLime text-white hover:text-jetBlack border border-neonLime/40 px-3.5 py-1.5 rounded-full text-xs font-racing font-bold flex items-center space-x-1.5 transition-all shrink-0">
+                <i class="fa-solid fa-xmark text-sm"></i>
+                <span>TUTUP</span>
+            </button>
+        </div>
+
+        <!-- Fullscreen Video Container (9:16 Responsive) -->
+        <div class="relative w-full max-w-[380px] h-[75vh] max-h-[680px] rounded-2xl overflow-hidden border-2 border-neonLime shadow-[0_0_40px_rgba(183,255,0,0.3)] bg-black">
+            <iframe id="fullscreen-short-iframe" class="w-full h-full" src="" title="Glow Up Fullscreen Video" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <!-- INTERACTIVE JAVASCRIPT -->
     <script>
+        // Hero Video Audio Control
+        let isHeroMuted = false;
+        function toggleHeroAudio() {
+            const heroIframe = document.getElementById('hero-short-iframe');
+            const audioIcon = document.getElementById('hero-audio-icon');
+            const audioText = document.getElementById('hero-audio-text');
+            if (!heroIframe) return;
+
+            isHeroMuted = !isHeroMuted;
+            const muteParam = isHeroMuted ? 1 : 0;
+            heroIframe.src = `https://www.youtube.com/embed/YN_-mjS3Aqk?autoplay=1&mute=${muteParam}&loop=1&playlist=YN_-mjS3Aqk&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`;
+
+            if (isHeroMuted) {
+                audioIcon.className = 'fa-solid fa-volume-xmark';
+                audioText.textContent = 'MUTED';
+            } else {
+                audioIcon.className = 'fa-solid fa-volume-high';
+                audioText.textContent = 'AUDIO ON';
+            }
+        }
+
+        // Gallery Fullscreen Short Modal Logic
+        const fullscreenModal = document.getElementById('short-fullscreen-modal');
+        const fullscreenIframe = document.getElementById('fullscreen-short-iframe');
+        const fullscreenTitle = document.getElementById('fullscreen-short-title');
+
+        function openFullscreenShort(videoId, title) {
+            if (!fullscreenModal || !fullscreenIframe) return;
+
+            // Mute hero audio saat video galeri dibuka fullscreen agar suara tidak bertabrakan
+            const heroIframe = document.getElementById('hero-short-iframe');
+            if (heroIframe && !isHeroMuted) {
+                toggleHeroAudio();
+            }
+
+            if (fullscreenTitle) {
+                fullscreenTitle.textContent = title || 'GLOW UP SHORTS';
+            }
+
+            fullscreenIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&loop=1&playlist=${videoId}&controls=1&modestbranding=1&rel=0&playsinline=1`;
+            fullscreenModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            // Request native browser fullscreen jika didukung
+            if (fullscreenModal.requestFullscreen) {
+                fullscreenModal.requestFullscreen().catch(() => {});
+            } else if (fullscreenModal.webkitRequestFullscreen) {
+                fullscreenModal.webkitRequestFullscreen();
+            }
+        }
+
+        function closeFullscreenShort() {
+            if (!fullscreenModal || !fullscreenIframe) return;
+
+            fullscreenIframe.src = '';
+            fullscreenModal.classList.add('hidden');
+            document.body.style.overflow = '';
+
+            if (document.fullscreenElement || document.webkitFullscreenElement) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().catch(() => {});
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+        }
+
+        // Tutup modal otomatis jika user menekan tombol ESC atau keluar dari native fullscreen
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement && fullscreenModal && !fullscreenModal.classList.contains('hidden')) {
+                closeFullscreenShort();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && fullscreenModal && !fullscreenModal.classList.contains('hidden')) {
+                closeFullscreenShort();
+            }
+        });
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
